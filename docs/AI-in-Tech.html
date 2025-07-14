@@ -7,16 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Chosen Palette: Cool Gray & Tech Blue -->
-    <!-- Application Structure Plan: The application uses a "Living Blueprint" analogy. It starts by explaining the value of Solution Architecture ("Why a Blueprint Matters"). It then presents the core challenge ("The Problem"), the modern solution ("The Unified Living Blueprint"), and the AI enabler ("J.A.R.V.I.S."). The pivotal section, "The Collaboration Engine," uses a hub-and-spoke diagram to explain full SDLC traceability. This is followed by the holistic benefits ("The AI Advantage"), real-world use cases ("Business Impact"), and an interactive "Ask the AI Architect" chat feature. -->
+    <!-- Application Structure Plan: The application uses a "Living Blueprint" analogy. It starts by explaining the value of Solution Architecture ("Why a Blueprint Matters"). It then presents the core challenge ("The Problem"), the modern solution ("The Unified Living Blueprint"), and the AI enabler ("J.A.R.V.I.S."). The pivotal section, "The Collaboration Engine," uses a hub-and-spoke diagram to explain full SDLC traceability. A new section, "Strategic Design," explains how the AI partnership helps meet constraints. This is followed by the holistic benefits ("The AI Advantage") and quantitative proof ("Business Impact"). -->
     <!-- Visualization & Content Choices: 
         - Report Info: Benefits of Solution Architecture -> Goal: Establish baseline value. -> Viz/Presentation: 3-column layout with icons. -> Interaction: Static. -> Justification: Quickly conveys core business benefits. -> Library/Method: HTML/Tailwind.
         - Report Info: "The Before Picture" & "The Big Problem" -> Goal: Explain the challenge of disconnected plans. -> Viz/Presentation: Tabbed card using a multi-layer building blueprint analogy. -> Interaction: User clicks tab. -> Justification: Makes the complexity of desynchronized software layers tangible. -> Library/Method: HTML/Tailwind.
         - Report Info: "The Revolution (Everything as Code)" -> Goal: Explain the unified, code-based solution accurately. -> Viz/Presentation: Tabbed card redesigned to show a "Unified Project" connecting to multiple, specialized code files. -> Interaction: User clicks tab and "Explain" button. -> Justification: Correctly represents that EaC is a collection of interconnected, specialized files. -> Library/Method: HTML/Tailwind/Gemini API.
         - Report Info: "Enter the AI Co-pilot" -> Goal: Detail the AI's role, framed as J.A.R.V.I.S. -> Viz/Presentation: Tabbed card with a stylized visual and a 2x2 grid of capabilities. -> Interaction: User clicks tab. -> Justification: The J.A.R.V.I.S. theme makes the AI's role exciting and understandable. -> Library/Method: HTML/Tailwind.
         - Report Info: Human-AI Collaboration & Traceability -> Goal: Explain the shared workspace and full SDLC traceability. -> Viz/Presentation: Dedicated section with a comprehensive hub-and-spoke diagram. -> Interaction: Static. -> Justification: This visual powerfully explains how a central blueprint connects all development phases. -> Library/Method: HTML/Tailwind.
+        - Report Info: Strategic Design -> Goal: Explain how AI helps meet budget, security, and performance goals. -> Viz/Presentation: New dedicated section with 3 cards for Cost, Security, and Performance. -> Interaction: Static. -> Justification: This directly addresses a core function of solution architecture and makes the AI's value concrete. -> Library/Method: HTML/Tailwind.
         - Report Info: Benefits of AI in Development -> Goal: Show broad impact of AI. -> Viz/Presentation: Expanded 3x2 grid detailing benefits across the lifecycle. -> Interaction: Static. -> Justification: Provides a holistic view of AI's value. -> Library/Method: HTML/Tailwind.
         - Report Info: "Real-World Example" & Business Impact -> Goal: Prove value with concrete use cases. -> Viz/Presentation: Expanded section with industry use cases and the integrated timeline chart. -> Interaction: Static content + animated chart. -> Justification: Grounds the abstract benefits in specific, credible business scenarios. -> Library/Method: HTML/Tailwind, Chart.js/Canvas.
-        - Report Info: User Questions -> Goal: Allow interactive Q&A. -> Viz/Presentation: A chat interface. -> Interaction: User types a question and receives an AI-generated answer. -> Justification: Provides a direct, engaging way to demonstrate the power of LLMs. -> Library/Method: HTML/Tailwind/Gemini API.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -66,8 +66,8 @@
         <main>
             <section id="why-it-matters" class="mb-12 md:mb-20">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Why a Blueprint Matters</h2>
-                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Before we explore the future, it's crucial to understand why a solid technology plan—or "solution architecture"—is vital for any business. A good blueprint does more than just guide construction; it ensures success.</p>
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">What is Solution Architecture?</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Think of a company as a city. A Solution Architect is the city's master planner. Their job is to create the **master blueprint** that ensures all the different parts—websites, databases, security systems—work together to meet the city's goals, like growing the economy or keeping citizens safe.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="bg-white p-6 rounded-xl shadow-lg">
@@ -227,6 +227,30 @@
                 </div>
             </section>
 
+            <section id="strategic-design" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Strategic Design: The Architect's Cockpit</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">The Living Blueprint gives the architect a "cockpit" view of the system. With J.A.R.V.I.S. as the co-pilot, they can make strategic trade-offs to meet business goals with unprecedented speed and confidence.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-3xl mb-3">💸</div>
+                        <h4 class="font-semibold text-lg mb-2">Cost Optimization</h4>
+                        <p class="text-slate-600 text-sm">The architect asks, "What's the most cost-effective server for this workload?" J.A.R.V.I.S. analyzes the blueprint, compares cloud provider pricing in real-time, and suggests the optimal choice that meets performance needs without overspending.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-3xl mb-3">🛡️</div>
+                        <h4 class="font-semibold text-lg mb-2">Security by Design</h4>
+                        <p class="text-slate-600 text-sm">A new security policy requires all data storage to be encrypted. J.A.R.V.I.S. automatically scans the entire blueprint and flags a database that's missing the `encrypted: true` setting, preventing a compliance violation before it's ever deployed.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-3xl mb-3">🚀</div>
+                        <h4 class="font-semibold text-lg mb-2">Performance Modeling</h4>
+                        <p class="text-slate-600 text-sm">The architect asks, "Can this design handle a 50% traffic spike for the holiday sale?" J.A.R.V.I.S. simulates the load against the blueprint and recommends specific changes, like increasing server size, to ensure the system remains stable.</p>
+                    </div>
+                </div>
+            </section>
+            
             <section id="ai-advantage" class="mb-12 md:mb-20">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">The AI Advantage: Benefits Across the Lifecycle</h2>
@@ -292,25 +316,6 @@
                     <p class="text-slate-600 max-w-3xl mx-auto">This isn't just a future concept; it's the foundation of the modern **DevOps** and **DevSecOps** movements. This methodology is actively championed and built into the platforms of technology leaders like **Microsoft (with GitHub Copilot)** and **Amazon (with AWS)**, validating its real-world impact and importance.</p>
                 </div>
             </section>
-            
-            <section id="ai-chat" class="mb-12 md:mb-20">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Ask J.A.R.V.I.S.</h2>
-                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Have a question about these concepts? Ask the AI architect and get an answer in plain English. Try asking "What is a unified blueprint?" or "How does traceability help with security?".</p>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg max-w-3xl mx-auto">
-                    <div id="chat-output" class="h-64 overflow-y-auto mb-4 p-4 bg-slate-50 rounded-lg border">
-                        <div class="text-slate-500">Your conversation will appear here...</div>
-                    </div>
-                    <form id="chat-form" class="flex items-center gap-4">
-                        <input type="text" id="chat-input" class="flex-grow p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ask a question..." required>
-                        <button type="submit" id="chat-submit-btn" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
-                            Send
-                        </button>
-                    </form>
-                </div>
-            </section>
-
         </main>
 
         <footer class="text-center mt-16 border-t pt-8">
@@ -417,11 +422,6 @@
             const explanationOutput = document.getElementById('explanation-output');
             const codeSnippet = document.getElementById('code-snippet').innerText;
             
-            const chatForm = document.getElementById('chat-form');
-            const chatInput = document.getElementById('chat-input');
-            const chatOutput = document.getElementById('chat-output');
-            const chatSubmitBtn = document.getElementById('chat-submit-btn');
-
             async function callGemini(prompt) {
                 const apiKey = "";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -465,36 +465,6 @@
                 const explanation = await callGemini(prompt);
                 explanationOutput.innerHTML = `<p class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg">${explanation.replace(/\n/g, '<br>')}</p>`;
                 explainCodeBtn.disabled = false;
-            });
-
-            chatForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const userQuery = chatInput.value.trim();
-                if (!userQuery) return;
-
-                if (chatOutput.innerText.includes("Your conversation will appear here...")) {
-                    chatOutput.innerHTML = '';
-                }
-
-                chatOutput.innerHTML += `<div class="text-right mb-2"><span class="bg-blue-500 text-white py-1 px-3 rounded-lg inline-block">${userQuery}</span></div>`;
-                chatOutput.scrollTop = chatOutput.scrollHeight;
-                
-                chatInput.value = '';
-                chatSubmitBtn.innerHTML = '<div class="loader"></div>';
-                chatSubmitBtn.disabled = true;
-
-                const context = `You are an expert cloud solution architect named J.A.R.V.I.S., explaining concepts to a non-technical audience. Your persona is helpful and clear. Based on the following information, answer the user's question concisely.
-                
-                Context: A Solution Architect creates the "blueprint" for a company's technology. The old way involved separate, static paper blueprints that quickly became outdated and caused conflicts. The new way is a "Unified Living Blueprint" where all layers (infrastructure, application code, security policies, tests, requirements, diagrams) are defined together as interconnected code files in one project. Because the plan IS the code, it can never be out of date. This is called "Everything as Code". As an AI, you (J.A.R.V.I.S.) can read this unified blueprint to help the architect build, inspect, and explain the system. This creates end-to-end traceability, making technology development faster, safer, and better.
-                
-                User's question: "${userQuery}"`;
-
-                const response = await callGemini(context);
-
-                chatOutput.innerHTML += `<div class="text-left mb-4"><span class="bg-slate-200 py-1 px-3 rounded-lg inline-block">${response.replace(/\n/g, '<br>')}</span></div>`;
-                chatOutput.scrollTop = chatOutput.scrollHeight;
-                chatSubmitBtn.innerHTML = 'Send';
-                chatSubmitBtn.disabled = false;
             });
         });
     </script>
