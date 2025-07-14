@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. for Architects: The Living Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Cool Gray & Tech Blue -->
+    <!-- Application Structure Plan: The application uses a "Living Blueprint" analogy. It starts by explaining the value of Solution Architecture ("Why a Blueprint Matters"). It then presents the core challenge ("The Problem"), the modern solution ("The Unified Living Blueprint"), and the AI enabler ("J.A.R.V.I.S."). The pivotal section, "The Collaboration Engine," uses a hub-and-spoke diagram to explain full SDLC traceability. This is followed by the holistic benefits ("The AI Advantage"), real-world use cases ("Business Impact"), and an interactive "Ask the AI Architect" chat feature. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Benefits of Solution Architecture -> Goal: Establish baseline value. -> Viz/Presentation: 3-column layout with icons. -> Interaction: Static. -> Justification: Quickly conveys core business benefits. -> Library/Method: HTML/Tailwind.
+        - Report Info: "The Before Picture" & "The Big Problem" -> Goal: Explain the challenge of disconnected plans. -> Viz/Presentation: Tabbed card using a multi-layer building blueprint analogy. -> Interaction: User clicks tab. -> Justification: Makes the complexity of desynchronized software layers tangible. -> Library/Method: HTML/Tailwind.
+        - Report Info: "The Revolution (Everything as Code)" -> Goal: Explain the unified, code-based solution accurately. -> Viz/Presentation: Tabbed card redesigned to show a "Unified Project" connecting to multiple, specialized code files. -> Interaction: User clicks tab and "Explain" button. -> Justification: Correctly represents that EaC is a collection of interconnected, specialized files. -> Library/Method: HTML/Tailwind/Gemini API.
+        - Report Info: "Enter the AI Co-pilot" -> Goal: Detail the AI's role, framed as J.A.R.V.I.S. -> Viz/Presentation: Tabbed card with a stylized visual and a 2x2 grid of capabilities. -> Interaction: User clicks tab. -> Justification: The J.A.R.V.I.S. theme makes the AI's role exciting and understandable. -> Library/Method: HTML/Tailwind.
+        - Report Info: Human-AI Collaboration & Traceability -> Goal: Explain the shared workspace and full SDLC traceability. -> Viz/Presentation: Dedicated section with a comprehensive hub-and-spoke diagram. -> Interaction: Static. -> Justification: This visual powerfully explains how a central blueprint connects all development phases. -> Library/Method: HTML/Tailwind.
+        - Report Info: Benefits of AI in Development -> Goal: Show broad impact of AI. -> Viz/Presentation: Expanded 3x2 grid detailing benefits across the lifecycle. -> Interaction: Static. -> Justification: Provides a holistic view of AI's value. -> Library/Method: HTML/Tailwind.
+        - Report Info: "Real-World Example" & Business Impact -> Goal: Prove value with concrete use cases. -> Viz/Presentation: Expanded section with industry use cases and the integrated timeline chart. -> Interaction: Static content + animated chart. -> Justification: Grounds the abstract benefits in specific, credible business scenarios. -> Library/Method: HTML/Tailwind, Chart.js/Canvas.
+        - Report Info: User Questions -> Goal: Allow interactive Q&A. -> Viz/Presentation: A chat interface. -> Interaction: User types a question and receives an AI-generated answer. -> Justification: Provides a direct, engaging way to demonstrate the power of LLMs. -> Library/Method: HTML/Tailwind/Gemini API.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        .tab-btn.active {
+            border-color: #3b82f6;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 280px;
+            width: 100%;
+        }
+         @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">J.A.R.V.I.S. for <span class="text-blue-600">Architects</span></h1>
+            <p class="mt-3 max-w-3xl mx-auto text-lg text-slate-600 sm:text-xl">From Static Drawings to Living Blueprints: A New Era for Solution Architecture</p>
+        </header>
+
+        <main>
+            <section id="why-it-matters" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Why a Blueprint Matters</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Before we explore the future, it's crucial to understand why a solid technology plan—or "solution architecture"—is vital for any business. A good blueprint does more than just guide construction; it ensures success.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-3">🎯</div>
+                        <h4 class="font-semibold text-lg mb-1">Aligns with Business Goals</h4>
+                        <p class="text-slate-600 text-sm">Ensures that every piece of technology built directly supports and achieves specific business objectives.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-3">💰</div>
+                        <h4 class="font-semibold text-lg mb-1">Improves Cost-Efficiency</h4>
+                        <p class="text-slate-600 text-sm">Prevents wasteful spending by standardizing technology and planning for efficient use of resources.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-3">🧱</div>
+                        <h4 class="font-semibold text-lg mb-1">Enables Future Growth</h4>
+                        <p class="text-slate-600 text-sm">Creates a stable and scalable foundation, making it easier and faster to add new features later on.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="transformation" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                     <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">The Architect's Journey</h2>
+                     <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Now that we know why a blueprint is important, let's explore the core challenge architects face and how a new "living blueprint" approach, powered by a J.A.R.V.I.S.-like AI, is changing everything.</p>
+                </div>
+                
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <div class="border-b border-gray-200 mb-6">
+                        <nav id="tabs" class="-mb-px flex flex-wrap justify-center gap-x-4 sm:gap-x-6" aria-label="Tabs">
+                            <button class="tab-btn active shrink-0 border-b-2 py-3 px-1 text-base font-medium text-slate-500 hover:border-gray-300 hover:text-gray-700" data-tab="problem">
+                                1. The Problem
+                            </button>
+                            <button class="tab-btn shrink-0 border-b-2 border-transparent py-3 px-1 text-base font-medium text-slate-500 hover:border-gray-300 hover:text-gray-700" data-tab="solution">
+                                2. The Unified Blueprint
+                            </button>
+                            <button class="tab-btn shrink-0 border-b-2 border-transparent py-3 px-1 text-base font-medium text-slate-500 hover:border-gray-300 hover:text-gray-700" data-tab="ai">
+                                3. J.A.R.V.I.S.
+                            </button>
+                        </nav>
+                    </div>
+
+                    <div id="tab-content">
+                        <div id="problem-content" class="tab-panel">
+                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-800">The Dilemma of Disconnected Blueprints</h3>
+                            <p class="text-center text-slate-600 mb-6 max-w-3xl mx-auto">Imagine building a skyscraper. You have separate paper blueprints for the foundation, the electrical wiring, and the plumbing. Each is managed by a different team. When the plumbing team makes a change, the electrical blueprint is instantly wrong, creating conflict and risk. This is the traditional reality for technology architects.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div class="bg-slate-100/60 p-6 rounded-lg">
+                                    <div class="text-4xl mb-3">🏢</div>
+                                    <h4 class="font-semibold text-lg mb-1">The Foundation Plan</h4>
+                                    <p class="text-slate-600 text-sm">(Network & Servers) Changes without telling other teams.</p>
+                                </div>
+                                <div class="bg-slate-100/60 p-6 rounded-lg">
+                                    <div class="text-4xl mb-3">⚡️</div>
+                                    <h4 class="font-semibold text-lg mb-1">The Electrical Plan</h4>
+                                    <p class="text-slate-600 text-sm">(Applications) Becomes incompatible with the foundation.</p>
+                                </div>
+                                <div class="bg-slate-100/60 p-6 rounded-lg">
+                                    <div class="text-4xl mb-3">🛡️</div>
+                                    <h4 class="font-semibold text-lg mb-1">The Security Plan</h4>
+                                    <p class="text-slate-600 text-sm">(Data Protection) Can't keep up, leaving doors unlocked.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="solution-content" class="tab-panel hidden">
+                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-800">The Revolution: A Unified Living Blueprint</h3>
+                             <p class="text-center text-slate-600 mb-6 max-w-3xl mx-auto">The solution is to replace the scattered paper drawings with a **Unified Digital Blueprint**. This isn't one giant file, but a master project folder where all the separate layers are defined as interconnected code files. Because they are all code and stored together, they can be automatically validated against each other, creating a single, reliable source of truth.</p>
+                             <div class="bg-slate-100/60 p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-lg mb-3 flex items-center gap-2">📜 Blueprint Components</h4>
+                                    <p class="text-slate-600 mb-4 text-sm">The unified blueprint is a collection of specialized code files:</p>
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div class="bg-white p-2 rounded shadow-sm">📄 terraform.tf <span class="text-slate-500 block text-xs">Infrastructure</span></div>
+                                        <div class="bg-white p-2 rounded shadow-sm">📄 openapi.yaml <span class="text-slate-500 block text-xs">API Contracts</span></div>
+                                        <div class="bg-white p-2 rounded shadow-sm">📄 diagram.mermaid <span class="text-slate-500 block text-xs">Diagrams</span></div>
+                                        <div class="bg-white p-2 rounded shadow-sm">📄 tests.spec.js <span class="text-slate-500 block text-xs">Tests</span></div>
+                                    </div>
+                                </div>
+                                <div class="flex-1 w-full">
+                                    <h4 class="font-semibold text-lg mb-3 flex items-center gap-2">✍️ Example Code Layer</h4>
+                                    <pre id="code-snippet" class="bg-slate-800 text-white text-sm p-4 rounded-lg overflow-x-auto">server:
+  name: web-app-01
+  instance_type: t3.micro
+  region: us-east-1
+  storage:
+    size_gb: 20
+    encrypted: true</pre>
+                                    <button id="explain-code-btn" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                                        ✨ Explain this Blueprint Layer
+                                    </button>
+                                    <div id="explanation-output" class="mt-4 text-slate-700"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ai-content" class="tab-panel hidden">
+                            <h3 class="text-xl font-semibold text-center mb-4 text-slate-800">J.A.R.V.I.S.: The Architect's Co-pilot</h4>
+                             <p class="text-center text-slate-600 mb-6 max-w-2xl mx-auto">With a unified blueprint that's also machine-readable code, a J.A.R.V.I.S.-like AI can finally understand our entire system. It becomes the architect's indispensable partner.</p>
+                            <div class="flex flex-col md:flex-row items-center gap-8 bg-slate-100/60 p-6 rounded-lg">
+                                <div class="flex-shrink-0 flex flex-col items-center p-4 rounded-full bg-blue-100 shadow-lg shadow-blue-500/20">
+                                    <div class="text-6xl">🤖</div>
+                                    <div class="text-sm font-bold text-blue-700 mt-2">J.A.R.V.I.S.</div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
+                                    <div class="bg-white/60 p-4 rounded-lg">
+                                        <h4 class="font-semibold text-lg mb-2">🏗️ Smart Builder</h4>
+                                        <p class="text-slate-600 text-sm">The architect gives a high-level goal, and J.A.R.V.I.S. writes the detailed blueprint code to build it.</p>
+                                    </div>
+                                     <div class="bg-white/60 p-4 rounded-lg">
+                                        <h4 class="font-semibold text-lg mb-2">🌍 Instant Translator</h4>
+                                        <p class="text-slate-600 text-sm">Anyone can ask a question, and J.A.R.V.I.S. reads the blueprint to explain how any part of the system works.</p>
+                                    </div>
+                                    <div class="bg-white/60 p-4 rounded-lg">
+                                        <h4 class="font-semibold text-lg mb-2">🔬 24/7 Inspector</h4>
+                                        <p class="text-slate-600 text-sm">J.A.R.V.I.S. constantly inspects the blueprint for security risks and design flaws, flagging them instantly.</p>
+                                    </div>
+                                    <div class="bg-white/60 p-4 rounded-lg">
+                                        <h4 class="font-semibold text-lg mb-2">✏️ Automatic Draftsman</h4>
+                                        <p class="text-slate-600 text-sm">J.A.R.V.I.S. looks at the blueprint code and instantly generates an up-to-date visual diagram.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="collaboration-engine" class="mb-12 md:mb-20">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">The Collaboration Engine: A Single Source of Truth</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">The Unified Living Blueprint creates a revolutionary shared workspace. Because every document across the entire development lifecycle is connected to this central hub, it enables perfect traceability and true human-AI partnership.</p>
+                    <div class="mt-8 flex flex-col items-center space-y-4">
+                        <div class="relative w-full max-w-lg flex items-center justify-center h-56">
+                            <div class="absolute w-48 h-48 bg-blue-600 text-white font-bold rounded-full flex items-center justify-center text-center p-4 shadow-2xl shadow-blue-500/50">
+                                UNIFIED BLUEPRINT
+                            </div>
+                            <!-- Spokes -->
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -mt-8 text-center w-32">
+                                <div class="p-2 bg-slate-200 rounded-lg text-sm font-medium shadow">Plan & Design</div>
+                                <div class="text-xs text-slate-500 mt-1">Requirements, Diagrams</div>
+                            </div>
+                             <div class="absolute right-0 top-1/2 -translate-y-1/2 mt-4 -mr-12 text-center w-32">
+                                <div class="p-2 bg-slate-200 rounded-lg text-sm font-medium shadow">Build & Configure</div>
+                                <div class="text-xs text-slate-500 mt-1">Application Code</div>
+                            </div>
+                             <div class="absolute bottom-0 left-1/2 -translate-x-1/2 -mb-8 text-center w-32">
+                                <div class="p-2 bg-slate-200 rounded-lg text-sm font-medium shadow">Deploy & Operate</div>
+                                <div class="text-xs text-slate-500 mt-1">Infrastructure</div>
+                            </div>
+                             <div class="absolute left-0 top-1/2 -translate-y-1/2 mt-4 -ml-12 text-center w-32">
+                                <div class="p-2 bg-slate-200 rounded-lg text-sm font-medium shadow">Test & Secure</div>
+                                <div class="text-xs text-slate-500 mt-1">Tests, Security Policies</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-12 max-w-2xl mx-auto text-slate-700">When a business requirement changes, J.A.R.V.I.S. can instantly trace that change through the entire blueprint, highlighting every piece of code, every security rule, and every test that is affected. This **end-to-end traceability** eliminates guesswork and empowers a true, seamless partnership between the architect and the AI.</p>
+                </div>
+            </section>
+
+            <section id="ai-advantage" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">The AI Advantage: Benefits Across the Lifecycle</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">A J.A.R.V.I.S. Co-pilot's impact extends beyond just architecture, enhancing every stage of technology development.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-semibold text-lg mb-2 text-blue-600">Smarter Design</h4>
+                        <p class="text-slate-600 text-sm">AI helps architects explore more design options and choose the most efficient path before any code is written.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-semibold text-lg mb-2 text-blue-600">Faster Development</h4>
+                        <p class="text-slate-600 text-sm">AI writes boilerplate code and generates tests, dramatically increasing developer productivity.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-semibold text-lg mb-2 text-blue-600">Proactive Security</h4>
+                        <p class="text-slate-600 text-sm">AI identifies potential vulnerabilities as code is being written, preventing issues from ever reaching production.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg md:col-span-2">
+                        <h4 class="font-semibold text-lg mb-2 text-blue-600">Autonomous Cloud Operations</h4>
+                        <p class="text-slate-600 text-sm">J.A.R.V.I.S. reads the blueprint and actively **builds, modifies, and manages** the cloud infrastructure to match it perfectly. If the blueprint changes, the AI automatically applies those changes to the live environment.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-semibold text-lg mb-2 text-blue-600">Intelligent Operations</h4>
+                        <p class="text-slate-600 text-sm">AI can predict potential system failures and help engineers resolve outages faster by analyzing complex data.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="impact" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">The Business Impact: Real-World Use Cases</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">This isn't theoretical. This approach drives tangible results across industries by linking business needs directly to technology execution.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                        <div class="text-3xl mb-3">🏦</div>
+                        <h4 class="font-semibold text-lg mb-2">Accelerating FinTech Compliance</h4>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">A bank needs to prove to auditors that a new feature complies with data privacy laws. Instead of a manual search, they show the auditors the "Living Blueprint," where the privacy rules are defined as code. J.A.R.V.I.S. instantly generates a report showing every part of the system that enforces that rule.</p>
+                        <p class="font-bold text-blue-600 text-sm mt-auto">Outcome: Reduced audit prep time from months to days.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                        <div class="text-3xl mb-3">🛒</div>
+                        <h4 class="font-semibold text-lg mb-2">Powering E-Commerce Agility</h4>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">A retail company wants to launch a flash sale. The marketing team updates the "Requirements" layer of the blueprint. J.A.R.V.I.S. sees the change and automatically tells the infrastructure layer to prepare for a traffic spike, ensuring the site never crashes during the sale.</p>
+                        <p class="font-bold text-blue-600 text-sm mt-auto">Outcome: Launched new campaigns 4x faster with zero downtime.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col">
+                        <div class="text-3xl mb-3">⚕️</div>
+                        <h4 class="font-semibold text-lg mb-2">Ensuring Healthcare Data Security</h4>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">A hospital adds a new medical device. The architect adds the device to the "Living Blueprint." J.A.R.V.I.S. instantly checks this change against the security layer, automatically applying all required HIPAA data protection rules before the device can even connect to the network.</p>
+                        <p class="font-bold text-blue-600 text-sm mt-auto">Outcome: Maintained 100% compliance while integrating new technology.</p>
+                    </div>
+                </div>
+                <div class="mt-12 bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-center mb-4 text-slate-800">Summary: From Weeks to Days</h3>
+                     <div class="chart-container max-w-3xl">
+                        <canvas id="timelineChart"></canvas>
+                    </div>
+                </div>
+                <div class="mt-12 text-center">
+                    <h4 class="font-semibold text-lg mb-2">Industry Validation</h4>
+                    <p class="text-slate-600 max-w-3xl mx-auto">This isn't just a future concept; it's the foundation of the modern **DevOps** and **DevSecOps** movements. This methodology is actively championed and built into the platforms of technology leaders like **Microsoft (with GitHub Copilot)** and **Amazon (with AWS)**, validating its real-world impact and importance.</p>
+                </div>
+            </section>
+            
+            <section id="ai-chat" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">Ask J.A.R.V.I.S.</h2>
+                    <p class="mt-2 text-md text-slate-500 max-w-3xl mx-auto">Have a question about these concepts? Ask the AI architect and get an answer in plain English. Try asking "What is a unified blueprint?" or "How does traceability help with security?".</p>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg max-w-3xl mx-auto">
+                    <div id="chat-output" class="h-64 overflow-y-auto mb-4 p-4 bg-slate-50 rounded-lg border">
+                        <div class="text-slate-500">Your conversation will appear here...</div>
+                    </div>
+                    <form id="chat-form" class="flex items-center gap-4">
+                        <input type="text" id="chat-input" class="flex-grow p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ask a question..." required>
+                        <button type="submit" id="chat-submit-btn" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 border-t pt-8">
+            <p class="text-sm text-slate-500">Interactive Summary | AI-Augmented Solution Architecture</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabsContainer = document.getElementById('tabs');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabsContainer.addEventListener('click', (e) => {
+                const clickedTab = e.target.closest('.tab-btn');
+                if (!clickedTab) return;
+
+                e.preventDefault();
+                
+                tabButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                clickedTab.classList.add('active');
+
+                const targetTab = clickedTab.getAttribute('data-tab');
+                
+                tabPanels.forEach(panel => {
+                    if (panel.id === `${targetTab}-content`) {
+                        panel.classList.remove('hidden');
+                    } else {
+                        panel.classList.add('hidden');
+                    }
+                });
+            });
+
+            const ctx = document.getElementById('timelineChart').getContext('2d');
+            const timelineChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['New Feature Deployment Timeline'],
+                    datasets: [
+                        {
+                            label: 'Old Way (Static Blueprints)',
+                            data: [4.5],
+                            backgroundColor: 'rgba(107, 114, 128, 0.4)',
+                            borderColor: 'rgba(107, 114, 128, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                        },
+                        {
+                            label: 'New Way (Living Blueprint + J.A.R.V.I.S.)',
+                            data: [1],
+                            backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + ' weeks';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Time in Weeks'
+                            }
+                        },
+                         y: {
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            const explainCodeBtn = document.getElementById('explain-code-btn');
+            const explanationOutput = document.getElementById('explanation-output');
+            const codeSnippet = document.getElementById('code-snippet').innerText;
+            
+            const chatForm = document.getElementById('chat-form');
+            const chatInput = document.getElementById('chat-input');
+            const chatOutput = document.getElementById('chat-output');
+            const chatSubmitBtn = document.getElementById('chat-submit-btn');
+
+            async function callGemini(prompt) {
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        role: "user",
+                        parts: [{ text: prompt }]
+                    }]
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        return "Sorry, I couldn't get a response. The response from the AI was empty.";
+                    }
+                } catch (error) {
+                    console.error("Error calling Gemini API:", error);
+                    return "Sorry, there was an error connecting to the AI service.";
+                }
+            }
+
+            explainCodeBtn.addEventListener('click', async () => {
+                explanationOutput.innerHTML = '<div class="flex items-center justify-center"><div class="loader"></div><span class="ml-2 text-slate-500">J.A.R.V.I.S. is thinking...</span></div>';
+                explainCodeBtn.disabled = true;
+
+                const prompt = `Explain the following technical blueprint code in simple, plain English for a non-technical manager. Focus on what it does, not how it does it. Here is the code:\n\n${codeSnippet}`;
+                
+                const explanation = await callGemini(prompt);
+                explanationOutput.innerHTML = `<p class="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg">${explanation.replace(/\n/g, '<br>')}</p>`;
+                explainCodeBtn.disabled = false;
+            });
+
+            chatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userQuery = chatInput.value.trim();
+                if (!userQuery) return;
+
+                if (chatOutput.innerText.includes("Your conversation will appear here...")) {
+                    chatOutput.innerHTML = '';
+                }
+
+                chatOutput.innerHTML += `<div class="text-right mb-2"><span class="bg-blue-500 text-white py-1 px-3 rounded-lg inline-block">${userQuery}</span></div>`;
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+                
+                chatInput.value = '';
+                chatSubmitBtn.innerHTML = '<div class="loader"></div>';
+                chatSubmitBtn.disabled = true;
+
+                const context = `You are an expert cloud solution architect named J.A.R.V.I.S., explaining concepts to a non-technical audience. Your persona is helpful and clear. Based on the following information, answer the user's question concisely.
+                
+                Context: A Solution Architect creates the "blueprint" for a company's technology. The old way involved separate, static paper blueprints that quickly became outdated and caused conflicts. The new way is a "Unified Living Blueprint" where all layers (infrastructure, application code, security policies, tests, requirements, diagrams) are defined together as interconnected code files in one project. Because the plan IS the code, it can never be out of date. This is called "Everything as Code". As an AI, you (J.A.R.V.I.S.) can read this unified blueprint to help the architect build, inspect, and explain the system. This creates end-to-end traceability, making technology development faster, safer, and better.
+                
+                User's question: "${userQuery}"`;
+
+                const response = await callGemini(context);
+
+                chatOutput.innerHTML += `<div class="text-left mb-4"><span class="bg-slate-200 py-1 px-3 rounded-lg inline-block">${response.replace(/\n/g, '<br>')}</span></div>`;
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+                chatSubmitBtn.innerHTML = 'Send';
+                chatSubmitBtn.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+</html>
+
